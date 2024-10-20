@@ -13,10 +13,10 @@ Flow elements require **space** (sometimes referred to as white space) to physic
 The following code is therefore problematic:
 
 ´´´css  
-`p {`  
-   `margin-bottom: 1.5rem;`  
-`}`  
-\`\`\`  
+p {  
+   margin-bottom: 1.5rem;  
+} 
+``` 
 Since **the declaration is not context sensitive, any correct application of the margin is a matter of luck**.   
 If the paragraph is preceded /precedido by another element, the effect is desirable.   
 But a :last-child paragraph produces a **redundant margin**.   
