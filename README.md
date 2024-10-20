@@ -1,6 +1,6 @@
-1. # The Stack
+# The Stack
 
-   1. ## The problem
+1. ## The problem
 
 Flow elements require **space** (sometimes referred to as white space) to physically and conceptually separate them from the elements that come before and after them. This is **the purpose of the margin property.** 
 
