@@ -12,7 +12,7 @@ Flow elements require **space** (sometimes referred to as white space) to physic
 *Typically, this does not produce any issues, but **margin is really a property of the relationship between two proximate elements**.*     
 The following code is therefore problematic:
 
-´´´css  
+```css 
 p {  
    margin-bottom: 1.5rem;  
 } 
@@ -27,12 +27,11 @@ Inside a padded parent element, this redundant margin combines with the parent�
 The trick is to **style the context, not the individual element(s)**.   
 The Stack layout primitive **injects margin between elements via their common parent**:
 
-´´´css  
-`.stack > * + * {`  
-   `margin-block-start: 1.5rem;`  
-`}`
-
-\`\`\`
+```css   
+.stack > * + * { 
+   margin-block-start: 1.5rem;` 
+}
+``` 
 
 Using the adjacent **sibling combinator (+)**, margin-block-start **is only applied where the element is preceded by another element:** no “left over” margin. 
 
