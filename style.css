@@ -1,18 +1,10 @@
 :root {
     --color-dark: #050505;
-    --color-darkish: #404040;
-    --color-lightish: #e6e6e6;
     --color-light: #fafafa;
-    --color-mid: grey;
     
     background-color: var(--color-dark);
     color: var(--color-light);
     
-    --ratio: 1.4;
-    
-    --line-height: var(--ratio);
-    line-height: var(--ratio);
-    --line-height-small: calc(0.8*var(--ratio));
 
     --s-5: clamp(0.33rem,0.39rem + -0.29vw,0.18rem);
     --s-4: clamp(0.41rem,0.47rem + -0.31vw,0.25rem);
@@ -29,77 +21,46 @@
     
     --border-thin: var(--s-5);
     --border-thick: var(--s-2);
-    
+
     --measure: 65ch;
 }
 
-*, :after, :before {
+html {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0 solid;
 }
 
+ *,
+ *::before,
+ *::after {
+     box-sizing: inherit;
+ }
 
+ /* Exception-based styling ----------------------- */
+blockquote, body, dd, dl, figure, h1, h2, h3, h4, p {
+    margin-block: 0;
+}
+
+/* === is NOT Stack layout ===  */
 .stack {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    
 
-    /* is NOT a part of the default Stack layout */
-        /* margin-top: var(--s2); */
-        /* max-inline-size: var(--measure); */
-        max-width: 80ch;
-        margin-inline: auto;
+    max-width: 85ch;
+    margin-inline: auto;
+    margin-block-start: var(--space, 1.5rem);
 }
-
-/* 
-.stack > * targets all all direct child elements
-selects all elements that are descendants of elements with the class "stack" 
-but are not descendants of other elements with the class "stack".
-*/
-.stack > * {
-    margin-block: 0;
-} 
-
 
 /* 
 .stack > * + * targets all direct child elements of elements with the class "stack", 
 but only if they are not preceded by another direct child element of the same parent. 
 In other words, it selects all elements that are descendants of elements with the class "stack" 
 but are not descendants of other elements with the class "stack".
-
-
-margin-block-start: set the margin of an element at the start of a block-level box. 
-It specifies the margin space between the element's top border and the top of its containing block.
-
-to a value determined by the --space CSS variable. 
-If the --space variable is not defined, it defaults to 1.5rem. 
-This means that the top margin of the element will be 1.5rem 
-unless otherwise specified.
 */  
 .stack > * + * {
     margin-block-start: var(--space, 1.5rem);
 }
 
-
-/* === is NOT a part of the default Stack layout ===  */
 .child {
-    /* 
-    outline/contorno is drawn outside the element's border, and may overlap other content. 
-    is NOT a part of the element's dimensions; the element's total width and height is not affected by the width of the outline.
-    */
-
-    outline: var(--border-thin) solid orangered;/* transparent */
-    /* 
-    sets the outline-offset to the negative value of --border-thin.
-    outline-offset: Specifies the distance between the outline and the element's border.
-                    distance between an element's content and its outline. 
-                    spacing between the outline and the element's content.
-    calc():         subtracts the value of --border-thin from zero.
-    */
-    outline-offset: calc(var(--border-thin)*-1);
-
-    padding: var(--s4);
+    border: var(--border-thin) solid var(--color-light);
+    padding-block: var(--s2);
 }
